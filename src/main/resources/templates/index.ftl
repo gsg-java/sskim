@@ -28,7 +28,7 @@
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
     <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="#page-top">Kingbbode</a>
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">Resume</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             Menu
             <i class="fa fa-bars"></i>
@@ -62,56 +62,14 @@
 </header>
 
 <!-- Portfolio Grid Section -->
-<section id="skill">
-    <div class="container">
-        <h2 class="text-center">Skill</h2>
-        <hr class="star-primary">
-        <div class="row">
-        <#list portfolios as portfolio>
-            <div class="col-sm-4 portfolio-item">
-                <a class="portfolio-link" data-idx = "${portfolio.idx}">
-                    <div class="caption">
-                        <div class="caption-content">
-                            <i class="fa fa-search-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="${portfolio.image}" alt="">
-                </a>
-            </div>
-        </#list>
-        </div>
-    </div>
-</section>
-
-<section class="success" id="activity">
-    <div class="container">
-        <h2 class="text-center">활동</h2>
-        <hr class="star-light">
-        <div class="row">
-        <#list portfolios as portfolio>
-            <div class="col-sm-4 portfolio-item">
-                <a class="portfolio-link" data-toggle="modal" data-idx = "${portfolio.idx}">
-                    <div class="caption">
-                        <div class="caption-content">
-                            <i class="fa fa-search-plus fa-3x"></i>
-                        </div>
-                    </div>
-                    <img class="img-fluid" src="${portfolio.image}" alt="">
-                </a>
-            </div>
-        </#list>
-        </div>
-    </div>
-</section>
-
 <section id="portfolio">
     <div class="container">
-        <h2 class="text-center">주요 프로젝트</h2>
+        <h2 class="text-center">Portfolio</h2>
         <hr class="star-primary">
         <div class="row">
         <#list portfolios as portfolio>
             <div class="col-sm-4 portfolio-item">
-                <a class="portfolio-link" data-toggle="modal" data-idx = "${portfolio.idx}">
+                <a class="portfolio-link" href="#portfolioModal${portfolio?counter}" data-toggle="modal">
                     <div class="caption">
                         <div class="caption-content">
                             <i class="fa fa-search-plus fa-3x"></i>
@@ -124,7 +82,6 @@
         </div>
     </div>
 </section>
-
 
 <!-- About Section -->
 <section class="success" id="about">
@@ -203,33 +160,34 @@
         <div class="container">
             <div class="row">
                 <div class="footer-col col-md-4">
-                    <h3>Blog</h3>
-                    <p>
-                        <a href="">Tistory(kingbbode.tistory.com)</a>
-                        <br>
-                        <a href="">Github(kingbbode.github.io)</a>
-                    </p>
+                    <h3>Location</h3>
+                    <p>93, Hwagok-ro 63-gil, Gangseo-gu,
+                        <br>Seoul, Republic of Korea</p>
                 </div>
-            <#--
-            <div class="footer-col col-md-4">
-                <h3>About Freelancer</h3>
-                <p></p>
-            </div>
-            -->
                 <div class="footer-col col-md-4">
-                    <h3>Social</h3>
+                    <h3>Around the Web</h3>
                     <ul class="list-inline">
                         <li class="list-inline-item">
-                            <a class="btn-social btn-outline" href="#">
+                            <a class="btn-social btn-outline" target="_blank" href="https://www.facebook.com/kim.seongseob">
                                 <i class="fa fa-fw fa-facebook"></i>
                             </a>
                         </li>
                         <li class="list-inline-item">
-                            <a class="btn-social btn-outline" href="#">
+                            <a class="btn-social btn-outline" target="_blank" href="https://github.com/tjdtjq91">
                                 <i class="fa fa-fw fa-github"></i>
                             </a>
                         </li>
+                        <li class="list-inline-item">
+                            <a class="btn-social btn-outline" href="#">
+                                <i class="fa fa-fw fa-instagram"></i>
+                            </a>
+                        </li>
                     </ul>
+                </div>
+                <div class="footer-col col-md-4">
+                    <h3>About Freelancer</h3>
+                    <p>Freelance is a free to use, open source Bootstrap theme created by
+                        <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
                 </div>
             </div>
         </div>
@@ -238,7 +196,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    Copyright &copy; kingbbode 2017
+                    Copyright &copy; 2017 Seong Seob Kim All rights reserved.
                 </div>
             </div>
         </div>
@@ -252,7 +210,9 @@
     </a>
 </div>
 
-<div class="portfolio-modal modal fade" id="portfolioModal" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- Portfolio Modals -->
+<#list portfolios as portfolio>
+<div class="portfolio-modal modal fade" id="portfolioModal${portfolio?counter}" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="close-modal" data-dismiss="modal">
@@ -264,15 +224,31 @@
                 <div class="row">
                     <div class="col-lg-8 mx-auto">
                         <div class="modal-body">
-                            <h2 id="portfolioModalTitle"></h2>
+                            <h2>Project Title</h2>
                             <hr class="star-primary">
-                            <img id="portfolioModalImage" class="img-fluid img-centered" src="" alt="">
-                            <p id="portfolioModalContent">
-                            </p>
+                            <img class="img-fluid img-centered" src="${portfolio.image}" alt="">
+                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by
+                                <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
+                            <ul class="list-inline item-details">
+                                <li>Client:
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Start Bootstrap</a>
+                                    </strong>
+                                </li>
+                                <li>Date:
+                                    <strong>
+                                        <a href="http://startbootstrap.com">April 2014</a>
+                                    </strong>
+                                </li>
+                                <li>Service:
+                                    <strong>
+                                        <a href="http://startbootstrap.com">Web Development</a>
+                                    </strong>
+                                </li>
+                            </ul>
                             <button class="btn btn-success" type="button" data-dismiss="modal">
                                 <i class="fa fa-times"></i>
-                                Close
-                            </button>
+                                Close</button>
                         </div>
                     </div>
                 </div>
@@ -280,6 +256,7 @@
         </div>
     </div>
 </div>
+</#list>
 
 <!-- Bootstrap core JavaScript -->
 <script src="vendor/jquery/jquery.min.js"></script>
@@ -295,6 +272,7 @@
 
 <!-- Custom scripts for this template -->
 <script src="js/freelancer.min.js"></script>
+
 
 <script>
     $('#page-top').on('click', '.portfolio-link', function (e) {
